@@ -1,0 +1,10 @@
+<div>
+  <input 
+    type="range"
+    name="range-{{device.id}}"
+    min="0"
+    max="100"
+    [value]="device.value"
+    (change)="triggerRange($event)">
+  <label for="volume">Volume</label>
+</div>

@@ -1,0 +1,16 @@
+@import '../palette.scss';
+
+.toggle-btn {
+  border-radius: 10px;
+  @include neumorph();
+
+  height: 50px;
+  width: 50px;
+
+  outline: none;
+  border: none;
+}
+
+.device-container {
+  margin-bottom: 20px;
+}

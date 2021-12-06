@@ -1,0 +1,22 @@
+<div class="boolean-device">
+  <form>
+    <div>
+      <input type="radio" name="bool-{{device.id}}"
+        [checked]="device.value && device.manual"
+        (click)="trigger(true, true)">
+      On
+    </div>
+    <div>
+      <input type="radio" name="bool-{{device.id}}"
+        [checked]="!device.manual"
+        (click)="trigger(device.value, false)">
+      Auto
+    </div>
+    <div>
+      <input type="radio" name="bool-{{device.id}}"
+        [checked]="!device.value && device.manual"
+        (click)="trigger(false, true)">
+      Off
+    </div>
+  </form>
+</div>
