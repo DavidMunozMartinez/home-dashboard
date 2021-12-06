@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ServerService {
 
-  private server = 'http://localhost:8080/'
+  private server = 'http://192.168.1.99:8080/'
 
   constructor(
     private http: HttpClient
