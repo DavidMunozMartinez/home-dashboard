@@ -1,22 +1,13 @@
-<div class="boolean-device">
-  <form>
-    <div>
-      <input type="radio" name="bool-{{device.id}}"
-        [checked]="device.value && device.manual"
-        (click)="trigger(true, true)">
-      On
-    </div>
-    <div>
-      <input type="radio" name="bool-{{device.id}}"
-        [checked]="!device.manual"
-        (click)="trigger(device.value, false)">
-      Auto
-    </div>
-    <div>
-      <input type="radio" name="bool-{{device.id}}"
-        [checked]="!device.value && device.manual"
-        (click)="trigger(false, true)">
-      Off
-    </div>
-  </form>
+<div style="display: flex;">
+  <span class="device-name">{{device.name}}</span>
+  
+  <span class="tri-state-switch">
+    <span (click)="trigger(false, true)">
+    </span>
+    <span (click)="trigger(device.value, false)">
+    </span>
+    <div class="state" [style]="stateStyle"></div>
+    <span (click)="trigger(true, true)">
+    </span>
+  </span>
 </div>

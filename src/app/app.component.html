@@ -1,9 +1,26 @@
 <div *ngIf="devices.length > 0">
-  <div *ngFor="let device of devices" class="device-container">
+  <div *ngFor="let device of devices" class="container">
     <app-boolean-device *ngIf="device.type === 'boolean'" [device]="device">
     </app-boolean-device>
 
     <app-range-device *ngIf="device.type === 'value'" [device]="device">
     </app-range-device>
+  </div>
+
+</div>
+
+<div class="container daily-events">
+  <p>
+    Daily scheduled:
+  </p>
+  <br>
+  <div *ngFor="let eventName of eventKeys">
+    {{events[eventName].time}}
+    {{events[eventName].name}}
+    <span *ngIf="events[eventName].children">
+      <span *ngFor="let child of events[eventName].children">
+        {{child}}
+      </span>
+    </span>
   </div>
 </div>

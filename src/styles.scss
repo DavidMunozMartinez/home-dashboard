@@ -4,3 +4,16 @@
 body, html {
   background-color: $background;
 }
+
+.container {
+  border-radius: 5px;
+  background-color: lightgray;
+  margin: 2px;
+  padding: 10px;
+  box-sizing: content-box;
+}
+
+.device-name {
+  flex: 1;
+  margin: auto;
+}

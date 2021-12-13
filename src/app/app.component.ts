@@ -7,8 +7,10 @@ import { ServerService } from './services/server.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'home-dashboard';
-  devices: any = [];
+  public devices: any = [];
+  public events: any = {};
+  public eventKeys: string[] = [];
+
   constructor(
     private serverService: ServerService
   ) {
@@ -17,14 +19,11 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.serverService.getDevices().then((devices: any) => {
       this.devices = devices;
-    })
-  }
-
-  trigger(device: any) {
-    
-    // if (device.type === 'boolean') {
-    //   device.value = !device.value;
-    //   this.serverService.triggerDevice(device.id, device.value);
-    // }
+    });
+    this.serverService.getDailyEvents().then((events: any) => {
+      this.eventKeys = Object.keys(events);
+      this.events = events;
+      console.log(this.events);
+    }); 
   }
 }

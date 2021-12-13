@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServerService {
 
-  private server = 'http://192.168.1.99:8080/'
-
+  private server = environment.production ? 'http://192.168.1.99:8080/' : 'http://localhost:8080/';
+ 
   constructor(
     private http: HttpClient
   ) { }
@@ -16,6 +17,8 @@ export class ServerService {
     return new Promise((resolve, reject) => {
       this.http.get(this.server + 'get-devices').toPromise().then(devices => {
         resolve(devices);
+      }).catch(reason => {
+        reject(reason);
       });
     });
   }
@@ -26,7 +29,7 @@ export class ServerService {
         device: id,
         value: value,
         manual: manual
-      }).toPromise().then((value) => {
+      }).toPromise().then(() => {
         resolve(true);
       }).catch((err) => {
         reject(err);
@@ -35,10 +38,14 @@ export class ServerService {
   }
 
   triggerRange(id: any, value: any) {
+    return this.triggerDevice(id, value, false);
+  }
+
+  getDailyEvents() {
     return new Promise((resolve, reject) => {
-      this.http.get(this.server + `manual-trigger?device=${id}&value=${value}`).toPromise().then(() =>{
-        resolve(true);
-      }).catch(reason => {
+      this.http.get(this.server + 'get-daily-events').toPromise().then((events) => {
+        resolve(events);
+      }).catch((reason) => {
         reject(reason);
       });
     });
