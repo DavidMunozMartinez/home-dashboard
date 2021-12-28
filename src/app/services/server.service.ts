@@ -50,4 +50,14 @@ export class ServerService {
       });
     });
   }
+
+  getRoomStates() {
+    return new Promise((resolve, reject) => {
+      this.http.get(this.server + 'get-room-states').toPromise().then(states => {
+        resolve(states);
+      }).catch(reason => {
+        reject(reason);
+      });
+    });
+  }
 }

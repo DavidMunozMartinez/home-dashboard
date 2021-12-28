@@ -18,7 +18,7 @@ export class RangeDeviceComponent implements OnInit {
   }
 
   triggerRange(event: any) {
-    this.serverService.triggerRange(this.device.id, event.target.value).then(() => {
+    this.serverService.triggerDevice(this.device.id, event.target.value, false).then(() => {
       this.device.value = event.target.value;
     });
   }

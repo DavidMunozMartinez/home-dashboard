@@ -10,6 +10,14 @@ export class AppComponent implements OnInit {
   public devices: any = [];
   public events: any = {};
   public eventKeys: string[] = [];
+  public states: any = [];
+
+  private roomKeyTranslate: any = {
+    'main-room': 'Main room',
+    'kitchen': 'Kitchen',
+    'dinning-room': 'Dinning room',
+    'living-room': 'Living room'
+  };
 
   constructor(
     private serverService: ServerService
@@ -25,5 +33,36 @@ export class AppComponent implements OnInit {
       this.events = events;
       console.log(this.events);
     }); 
+
+    this.serverService.getRoomStates().then((states: any) => {
+      let viewStates: any = [];
+      states.forEach((state: any) => {
+        let sensorData = Object.keys(state.data);
+        let stateData: any = [];
+        if (sensorData.length > 0) {
+          sensorData.forEach((sensorKey) => {
+            let data = state.data[sensorKey];
+            let valueArr = data.value.split(':');
+            let value = '';
+            if (valueArr.length > 1) {
+              value = `${valueArr[0]}°, ${valueArr[1]}%`;
+            } else {
+              value = data.value;
+            }
+            stateData.push({
+              description: data.description,
+              value: value 
+            });
+          });
+  
+          viewStates.push({
+            name: this.roomKeyTranslate[state.room],
+            data: stateData
+          });
+        }
+
+      });
+      this.states = viewStates;
+    });
   }
 }

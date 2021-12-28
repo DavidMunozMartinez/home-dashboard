@@ -9,6 +9,16 @@
 
 </div>
 
+<div class="container room-states">
+  <div *ngFor="let state of states">
+    {{state.name}}
+    <div *ngFor="let data of state.data">
+      {{data.description}}
+      {{data.value}}
+    </div>
+  </div>
+</div>
+
 <div class="container daily-events">
   <p>
     Daily scheduled:
