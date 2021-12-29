@@ -11,7 +11,8 @@
 
 <div class="container room-states">
   <div *ngFor="let state of states">
-    {{state.name}}
+    <br>
+    {{state.name}} {{'Currently ' + (state.active ? 'Active' : 'Inactive')}}
     <div *ngFor="let data of state.data">
       {{data.description}}
       {{data.value}}
@@ -25,12 +26,14 @@
   </p>
   <br>
   <div *ngFor="let eventName of eventKeys">
-    {{events[eventName].time}}
-    {{events[eventName].name}}
-    <span *ngIf="events[eventName].children">
-      <span *ngFor="let child of events[eventName].children">
-        {{child}}
+    <div [ngClass]="{'event-passed': events[eventName].passed}">
+      {{events[eventName].time}}
+      {{events[eventName].name}}
+      <span *ngIf="events[eventName].children">
+        <span *ngFor="let child of events[eventName].children">
+          {{child}}
+        </span>
       </span>
-    </span>
+    </div>
   </div>
 </div>

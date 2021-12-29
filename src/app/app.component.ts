@@ -21,8 +21,7 @@ export class AppComponent implements OnInit {
 
   constructor(
     private serverService: ServerService
-  ) {
-  }
+  ) {}
 
   ngOnInit() {
     this.serverService.getDevices().then((devices: any) => {
@@ -31,6 +30,13 @@ export class AppComponent implements OnInit {
     this.serverService.getDailyEvents().then((events: any) => {
       this.eventKeys = Object.keys(events);
       this.events = events;
+      this.events.forEach((event: any) => {
+        let now = new Date().getTime();
+        let hours = parseInt(event.time.split(':')[0]);
+        let minutes = parseInt(event.time.split(':')[1]);
+        let pm = event.time.split(' ')[1].toLowerCase() === 'pm';
+        event.passed = now > new Date().setHours(pm ? hours + 12 : hours, minutes);
+      });
       console.log(this.events);
     }); 
 
@@ -54,12 +60,12 @@ export class AppComponent implements OnInit {
               value: value 
             });
           });
-  
-          viewStates.push({
-            name: this.roomKeyTranslate[state.room],
-            data: stateData
-          });
         }
+        viewStates.push({
+          name: this.roomKeyTranslate[state.room],
+          data: stateData,
+          active: state.active
+        });
 
       });
       this.states = viewStates;
