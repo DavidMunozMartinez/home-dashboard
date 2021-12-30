@@ -12,7 +12,7 @@
 <div class="container room-states">
   <div *ngFor="let state of states">
     <br>
-    {{state.name}} {{'Currently ' + (state.active ? 'Active' : 'Inactive')}}
+    {{state.name}} {{'currently ' + (state.active ? 'active' : 'inactive')}}
     <div *ngFor="let data of state.data">
       {{data.description}}
       {{data.value}}
