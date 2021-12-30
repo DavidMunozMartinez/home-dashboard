@@ -45,6 +45,7 @@ export class AppComponent implements OnInit {
             let valueArr = data.value.split(':');
             let value = '';
             if (valueArr.length > 1) {
+              valueArr.map((val: any) =>  parseFloat(val));
               value = `${valueArr[0]}°, ${valueArr[1]}%`;
             } else {
               value = data.value;
