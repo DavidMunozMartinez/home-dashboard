@@ -1,19 +1,65 @@
 /* You can add global styles to this file, and also import other style files */
 @import './palette.scss';
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
-body, html {
+html {
   background-color: $background;
+  // background: rgb(2,0,36);
+  // background: linear-gradient(90deg, rgba(2,0,36,0.6488970588235294) 0%, rgba(9,9,121,0.5984768907563025) 35%, rgba(0,212,255,0.6909138655462185) 100%);
+
+  font-family: Roboto;
 }
 
 .container {
-  border-radius: 5px;
-  background-color: lightgray;
-  margin: 2px;
-  padding: 10px;
+  border-radius: 10px;
+  background-color: rgba(255,255,255,0.5);
+  margin: 15px;
+  padding: 20px;
   box-sizing: content-box;
+  box-shadow: 0 3px 10px rgba(0,0,0, 5%);
 }
 
 .device-name {
   flex: 1;
   margin: auto;
 }
+
+// input[type="range"] { 
+//   margin: auto;
+//   -webkit-appearance: none;
+//   position: relative;
+//   overflow: hidden;
+//   height: 36px;
+//   width: 50%;
+//   cursor: pointer;
+//   border-radius: 50px;
+// }
+
+// ::-webkit-slider-runnable-track {
+//   background: #ddd;
+// }
+
+// ::-moz-range-track {
+//   background: #ddd;
+//   height: 100%;
+// }
+
+// ::-moz-range-thumb {
+//   -moz-appearance: none;
+//     width: 34px; 
+//     height: 34px;
+//     border-radius: 50%;
+//     background: rgba(6,138,187, 1);
+//     box-shadow: -100vw 200px 10px 100vw rgba(6,138,187, .5);
+//     border: none;
+// }
+
+// ::-webkit-slider-thumb {
+//     -webkit-appearance: none;
+//     width: 34px; 
+//     height: 34px;
+//     border-radius: 50%;
+//     background: rgba(6,138,187, 1);
+//     box-shadow: -100vw 200px 10px 100vw rgba(6,138,187, .5);
+//     border: none; 
+// }

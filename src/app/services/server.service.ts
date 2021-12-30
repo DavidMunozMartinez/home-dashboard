@@ -29,8 +29,8 @@ export class ServerService {
         device: id,
         value: value,
         manual: manual
-      }).toPromise().then(() => {
-        resolve(true);
+      }).toPromise().then((success) => {
+        resolve(success);
       }).catch((err) => {
         reject(err);
       });

@@ -14,15 +14,15 @@ export class BooleanDeviceComponent implements OnInit {
   private states = {
     off: {
       left: '0',
-      background: 'rgb(166, 166, 166)'
+      background: 'rgb(225, 225, 225)'
     },
     auto: {
       left: 'calc(50% - 17.5px)',
-      background: 'rgb(235, 235, 235)'
+      background: 'rgb(245, 245, 245)'
     },
     on: {
       left: 'calc(100% - 35px)',
-      background: 'rgb(154, 219, 140)'
+      background: 'rgb(136 225 117 / 69%)'
     },
   };
 

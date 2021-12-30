@@ -7,5 +7,9 @@
     min="0"
     max="100"
     [value]="device.value"
-    (change)="triggerRange($event)">
+    (change)="triggerRange($event)"
+    (input)="test($event)">
+  <p>
+    {{device.value}}%
+  </p>
 </div>
